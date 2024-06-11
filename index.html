@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+
+
+
+        console.log("Hello World");
+        var humanScore = 0;
+        var computerScore = 0;
+
+        function getComputerChoice() {
+            const computerChoice =  Math.floor(Math.random() * 3);
+            if (computerChoice === 0) {
+                return "rock";
+            }
+            else if (computerChoice === 1) {
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+
+        
+
+        function getHumanChoice() {
+            let choice = prompt("Enter rock paper or scissors: ").toLowerCase();
+            return choice;
+        }
+
+        
+
+        function playRound(humanChoice, computerChoice) {
+            const selections = ["paper", "rock", "scissors"];
+
+
+            if (humanChoice === computerChoice) {
+                console.log(`It's a draw! You picks ${humanChoice} and computer picks ${computerChoice}.`)
+            }
+            else if ((humanChoice === "paper" && computerChoice === "rock") || 
+                (humanChoice === "rock" && computerChoice === "scissors") || 
+                (humanChoice == "scissors" && computerChoice === "paper")){
+                console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+                humanScore += 1;
+            }
+            else if (selections.includes(humanChoice)) {
+                console.log(`Computer win! ${computerChoice} beats ${humanChoice}.`);
+                computerScore += 1;
+            }
+            else {
+                console.log("You picked invalid selection!")
+            }
+        }
+
+        function  playGame() {
+            let count = 5;
+            for (let i = 0; i < count; i++){
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                console.log(`You pick ${humanSelection}`);
+                console.log(`Computer picks ${computerSelection}`);
+
+                playRound(humanSelection, computerSelection);
+            }
+
+            console.log(`Total rounds: ${count}`)
+            console.log(`User score: ${humanScore}       Computer score: ${computerScore}`);
+
+            if (humanScore > computerScore){
+                console.log(`You win the game!`)
+            }
+            else if (humanScore === computerScore) {
+                console.log(`This is a draw game!`)
+            }
+            else {
+                console.log(`Computer wins the game!`)
+            }
+
+            
+        }
+
+        playGame()
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
